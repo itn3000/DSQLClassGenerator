@@ -1,0 +1,43 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using DeclarativeSql.Annotations;
+<#
+if(AdditionalNamespace != null){
+#>
+<#
+  foreach(var ns in AdditionalNamespace){
+#>
+using <#=ns#>
+<#
+  }
+#>
+<#
+}
+#>
+
+namespace <#=Namespace#>
+{
+<#foreach(var t in Tables){#>
+    [Table("<#=t.Name#>"<#if(!string.IsNullOrEmpty(t.Schema) && OutputSchema){#>, Schema = "<#=t.Schema#>"<#}#>]
+    public class <#=ConvertClassName(t.Name)#>
+    {
+<#
+foreach(var column in t.Columns){
+#>
+<#if(column.IsPrimary){#>
+        [Key]
+<#}#>
+<#if(column.IsAutoIncrement){#>
+        [AutoIncrement]
+<#}#>
+        public <#=ConvertFieldTypeName(column.RawSqlDataType,column.CSType,column.Name)#> <#=ConvertFieldName(column.Name)#> { get; set; }
+<#}#>
+    }
+<#}#>
+}

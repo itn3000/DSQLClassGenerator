@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSQLClassGenerator", "DSQLClassGenerator\DSQLClassGenerator.csproj", "{B0709E14-A6E4-426B-AF43-6ED55B23A092}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSQLClassGenerator.Postgres", "DSQLClassGenerator.Postgres\DSQLClassGenerator.Postgres.csproj", "{B1D8FAD1-3824-42B3-9ABD-22B6B80FC352}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSQLClassGenerator.Common", "DSQLClassGenerator.Common\DSQLClassGenerator.Common.csproj", "{2E34F1BA-3B1B-40F7-A2FA-2FF0CD1891C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSQLClassGenerator.Generator", "DSQLClassGenerator.Generator\DSQLClassGenerator.Generator.csproj", "{13101618-CA7A-438A-BF35-1921D23A9D75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0709E14-A6E4-426B-AF43-6ED55B23A092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0709E14-A6E4-426B-AF43-6ED55B23A092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0709E14-A6E4-426B-AF43-6ED55B23A092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0709E14-A6E4-426B-AF43-6ED55B23A092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1D8FAD1-3824-42B3-9ABD-22B6B80FC352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D8FAD1-3824-42B3-9ABD-22B6B80FC352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D8FAD1-3824-42B3-9ABD-22B6B80FC352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D8FAD1-3824-42B3-9ABD-22B6B80FC352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E34F1BA-3B1B-40F7-A2FA-2FF0CD1891C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E34F1BA-3B1B-40F7-A2FA-2FF0CD1891C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E34F1BA-3B1B-40F7-A2FA-2FF0CD1891C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E34F1BA-3B1B-40F7-A2FA-2FF0CD1891C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13101618-CA7A-438A-BF35-1921D23A9D75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13101618-CA7A-438A-BF35-1921D23A9D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13101618-CA7A-438A-BF35-1921D23A9D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13101618-CA7A-438A-BF35-1921D23A9D75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
