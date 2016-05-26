@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSQLClassGenerator.Common",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSQLClassGenerator.Generator", "DSQLClassGenerator.Generator\DSQLClassGenerator.Generator.csproj", "{13101618-CA7A-438A-BF35-1921D23A9D75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DSQLClassGenerator.SqlServer", "DSQLClassGenerator.SqlServer\DSQLClassGenerator.SqlServer.csproj", "{F99A2AB7-8150-4EE1-9D85-160C0C4B1B52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{13101618-CA7A-438A-BF35-1921D23A9D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13101618-CA7A-438A-BF35-1921D23A9D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13101618-CA7A-438A-BF35-1921D23A9D75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F99A2AB7-8150-4EE1-9D85-160C0C4B1B52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F99A2AB7-8150-4EE1-9D85-160C0C4B1B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F99A2AB7-8150-4EE1-9D85-160C0C4B1B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F99A2AB7-8150-4EE1-9D85-160C0C4B1B52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -18,7 +18,7 @@ namespace DSQLClassGenerator.Generator
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+    #line 1 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     public partial class ClassGeneratorTemplate : ClassGeneratorTemplateBase
     {
@@ -31,7 +31,7 @@ namespace DSQLClassGenerator.Generator
             this.Write("using System;\r\nusing System.ComponentModel.DataAnnotations.Schema;\r\nusing System." +
                     "ComponentModel.DataAnnotations;\r\nusing DeclarativeSql.Annotations;\r\n");
             
-            #line 10 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 10 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 
 if(AdditionalNamespace != null){
 
@@ -39,7 +39,7 @@ if(AdditionalNamespace != null){
             #line default
             #line hidden
             
-            #line 13 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 13 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 
   foreach(var ns in AdditionalNamespace){
 
@@ -48,14 +48,14 @@ if(AdditionalNamespace != null){
             #line hidden
             this.Write("using ");
             
-            #line 16 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 16 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ns));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 17 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 17 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 
   }
 
@@ -63,7 +63,7 @@ if(AdditionalNamespace != null){
             #line default
             #line hidden
             
-            #line 20 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 20 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 
 }
 
@@ -72,56 +72,56 @@ if(AdditionalNamespace != null){
             #line hidden
             this.Write("\r\nnamespace ");
             
-            #line 24 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 24 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n");
             
-            #line 26 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 26 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 foreach(var t in Tables){
             
             #line default
             #line hidden
             this.Write("    [Table(\"");
             
-            #line 27 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 27 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(t.Name));
             
             #line default
             #line hidden
             this.Write("\"");
             
-            #line 27 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 27 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 if(!string.IsNullOrEmpty(t.Schema) && OutputSchema){
             
             #line default
             #line hidden
             this.Write(", Schema = \"");
             
-            #line 27 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 27 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(t.Schema));
             
             #line default
             #line hidden
             this.Write("\"");
             
-            #line 27 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 27 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 }
             
             #line default
             #line hidden
-            this.Write("]\r\n    public class ");
+            this.Write(")]\r\n    public class ");
             
-            #line 28 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 28 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConvertClassName(t.Name)));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n");
             
-            #line 30 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 30 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 
 foreach(var column in t.Columns){
 
@@ -129,55 +129,55 @@ foreach(var column in t.Columns){
             #line default
             #line hidden
             
-            #line 33 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 33 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 if(column.IsPrimary){
             
             #line default
             #line hidden
             this.Write("        [Key]\r\n");
             
-            #line 35 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 35 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 36 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 36 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 if(column.IsAutoIncrement){
             
             #line default
             #line hidden
             this.Write("        [AutoIncrement]\r\n");
             
-            #line 38 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 38 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("        public ");
             
-            #line 39 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 39 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConvertFieldTypeName(column.RawSqlDataType,column.CSType,column.Name)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 39 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 39 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConvertFieldName(column.Name)));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 40 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 40 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("    }\r\n");
             
-            #line 42 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.T4\ClassGeneratorTemplate.tt"
+            #line 42 "C:\Users\yusuke\Source\Repos\dsqlclassgenerator\DSQLClassGenerator.Generator\ClassGeneratorTemplate.tt"
 }
             
             #line default

@@ -24,7 +24,7 @@ using <#=ns#>
 namespace <#=Namespace#>
 {
 <#foreach(var t in Tables){#>
-    [Table("<#=t.Name#>"<#if(!string.IsNullOrEmpty(t.Schema) && OutputSchema){#>, Schema = "<#=t.Schema#>"<#}#>]
+    [Table("<#=t.Name#>"<#if(!string.IsNullOrEmpty(t.Schema) && OutputSchema){#>, Schema = "<#=t.Schema#>"<#}#>)]
     public class <#=ConvertClassName(t.Name)#>
     {
 <#

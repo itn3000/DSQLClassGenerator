@@ -12,6 +12,17 @@ namespace DSQLClassGenerator.Postgres
 {
     public class NpgsqlSchemaGetter : ISchemaGetter
     {
+        IDictionary<string, IDictionary<string, object>> GetSchemaTable(string schema, string table, DbConnection con)
+        {
+            using (var cmd = con.CreateCommand())
+            {
+                cmd.CommandText = $"select * from {schema}.{table} where 1=2";
+                using (var reader = cmd.ExecuteReader(CommandBehavior.KeyInfo))
+                {
+                    return reader.GetSchemaTable().ToDictionary().ToDictionary(x => x["ColumnName"].ToString());
+                }
+            }
+        }
         IEnumerable<Tuple<string,string>> GetTables(IEnumerable<string> targetSchemas, DbConnection con)
         {
             var isAnyTable = targetSchemas != null && targetSchemas.Count() != 0 ? false : true;
@@ -155,30 +166,54 @@ namespace DSQLClassGenerator.Postgres
             }
             return ci;
         }
-        IEnumerable<ColumnInfo> GetColumnInfo(DbConnection con, string schema, string tableName, IEnumerable<SequenceInfo> sequences)
+        Dictionary<string, Tuple<string,string>> GetNativeSqlTypeInfo(DbConnection con, string schema, string tableName)
         {
-            var sql = string.Format(@"
-select ic.*,ikcu.constraint_name,itc.constraint_type from information_schema.columns as ic
-  left join information_schema.key_column_usage as ikcu 
-    on ic.table_name=ikcu.table_name and ic.column_name=ikcu.column_name
-  left join information_schema.table_constraints as itc
-    on itc.constraint_name=ikcu.constraint_name
-  where ic.table_schema=@table_schema and ic.table_name=@table_name
-");
+            var sql = $"select column_name,data_type,column_default from information_schema.columns where table_schema=@table_schema and table_name=@table_name";
             using (var cmd = con.CreateCommand())
             {
                 cmd.CommandText = sql;
                 cmd.AddParameter("table_schema", schema);
                 cmd.AddParameter("table_name", tableName);
-                var ret = new List<ColumnInfo>();
                 using (var reader = cmd.ExecuteReader())
                 {
+                    var ret = new Dictionary<string, Tuple<string,string>>();
                     while (reader.Read())
                     {
-                        ret.Add(CreateColumnInfo(reader, sequences));
+                        ret[reader.GetString(0)] = Tuple.Create(
+                            reader.IsDBNull(1) ? "" : reader.GetString(1), 
+                            reader.IsDBNull(2) ? "" : reader.GetString(2));
+                    }
+                    return ret;
+                }
+            }
+        }
+        IEnumerable<ColumnInfo> GetColumnInfo(DbConnection con, string schema, string tableName, IEnumerable<SequenceInfo> sequences)
+        {
+            var schemaTable = GetSchemaTable(schema, tableName, con);
+            var tableNativeTypes = GetNativeSqlTypeInfo(con, schema, tableName);
+            foreach (var kv in schemaTable)
+            {
+                var col = new ColumnInfo();
+                col.Name = kv.Key;
+                col.CSType = (Type)kv.Value["DataType"];
+                col.IsNullable = (bool)kv.Value["AllowDBNull"];
+                col.DatabaseType = PgsqlTypeToDbType(tableNativeTypes[kv.Key].Item1);
+                col.IsPrimary = (bool)kv.Value["IsKey"];
+                col.NumericPrecision = (int)kv.Value["NumericPrecision"];
+                col.NumericScale = (int)kv.Value["NumericScale"];
+                col.RawSqlDataType = tableNativeTypes[kv.Key].Item1;
+                col.Size = (int)kv.Value["ColumnSize"];
+                if ((bool)kv.Value["IsAutoIncrement"] && !string.IsNullOrEmpty(tableNativeTypes[kv.Key].Item2))
+                {
+                    var m = Regex.Match(tableNativeTypes[kv.Key].Item2, @"^nextval.'([^']+)'.");
+                    if (m.Success)
+                    {
+                        var seqname = m.Groups[1].Value;
+                        col.Sequence = sequences.FirstOrDefault(x => x.Name == seqname);
                     }
                 }
-                return ret;
+                col.NumericPrecisionRadix = -1;
+                yield return col;
             }
         }
         public IEnumerable<TableInfo> Get(IEnumerable<string> targetSchemas, DbConnection con)

@@ -57,7 +57,7 @@ namespace DSQLClassGenerator.Generator
             }
             else
             {
-                ConvertFieldTypeName = (sn, t, x) => x;
+                ConvertFieldTypeName = (sn, t, x) => t.ToString();
             }
         }
     }

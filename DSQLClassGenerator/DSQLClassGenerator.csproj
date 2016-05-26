@@ -76,6 +76,10 @@
       <Project>{b1d8fad1-3824-42b3-9abd-22b6b80fc352}</Project>
       <Name>DSQLClassGenerator.Postgres</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DSQLClassGenerator.SqlServer\DSQLClassGenerator.SqlServer.csproj">
+      <Project>{f99a2ab7-8150-4ee1-9d85-160c0c4b1b52}</Project>
+      <Name>DSQLClassGenerator.SqlServer</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
