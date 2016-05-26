@@ -50,9 +50,10 @@ namespace DSQLClassGenerator
         static void WriteAmalgamatedCsFile(IEnumerable<TableInfo> tableInfo)
         {
             var filePath = OutputFilePath;
-            if (!Directory.Exists(Path.GetDirectoryName(filePath)))
+            var dirPath = Path.GetDirectoryName(filePath);
+            if (!string.IsNullOrEmpty(dirPath) && !Directory.Exists(dirPath))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+                Directory.CreateDirectory(dirPath);
             }
             var generator = new ClassGeneratorTemplate(tableInfo, Namespace, OutputSchema);
             File.WriteAllText(filePath, generator.TransformText(), Encoding.UTF8);
