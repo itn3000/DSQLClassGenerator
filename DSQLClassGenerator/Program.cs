@@ -29,7 +29,7 @@ namespace DSQLClassGenerator
             .Add("f|outputfile=", "Output file path(default: 'TablesDefinitions.cs',ignored when no amalgamation)", (string x) => OutputFilePath = x)
             .Add("n|namespace=", "Namespace(default: 'Example')", (string x) => Namespace = x)
             .Add("s|noschema=", "generate class without Schema attribute(default: output with schema attribute)", v => OutputSchema = !(v != null))
-            .Add("c|config", "Specify external configuration file path(configuration name must be 'Target')", x => ExternalAppConfig = x)
+            .Add("c|config=", "Specify external configuration file path(configuration name must be 'Target')", x => ExternalAppConfig = x)
             .Add("h|help", "Output help message", v => ShowHelp = v != null)
             ;
 
